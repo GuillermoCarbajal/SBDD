@@ -25,9 +25,3 @@ Then, run:
 bash dataset/generate_dataset.sh
 ```
 
-
-
-
-
-
-
