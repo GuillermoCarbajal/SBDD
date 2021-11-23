@@ -1,0 +1,6 @@
+# additional requirements for evaluation
+numpy
+scikit-image==0.17.2
+opencv-python
+
+
