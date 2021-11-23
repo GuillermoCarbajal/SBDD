@@ -25,3 +25,7 @@ Then, run:
 bash dataset/generate_dataset.sh
 ```
 
+### Evaluation
+
+python evaluation_parallel_ecc.py -b datasets/RealBlur/test/blur -s datasets/RealBlur/test/gt -r /results_deblurring/resultsRealBlur/SRN_trained_with_ADE/RealBlur_ade_ade_sat_483900
+
