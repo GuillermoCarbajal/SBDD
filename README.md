@@ -5,7 +5,7 @@
 conda create -n SBDD python=3.8
 pip install -r dataset/requirements.txt
 
-### ADE20K and kernels
+### ADE20K and kernels datasets
 
 Download ADE20K and the kernels used to generate the dataset:
 
