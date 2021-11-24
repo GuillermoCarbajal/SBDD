@@ -3,9 +3,15 @@
 
 ## Trained models
 
-Models can be anonymously downloaded from [here](https://drive.google.com/file/d/1Dg7UnSz2ZQmJ4jy0hucQ9od7ldsibwDN/view?usp=sharing)
+[SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with SBDD can be anonymously downloaded from [here](https://drive.google.com/file/d/1Dg7UnSz2ZQmJ4jy0hucQ9od7ldsibwDN/view?usp=sharing)
+
+## SBDD Dataset 
+
+The dataset used for train models can be downloaded from [here](https://www.dropbox.com/sh/8befj2azfz9w5rs/AAC_R9IB4Z3MCeFFg2OaPIAfa?dl=0)
 
 ## Dataset Generation
+
+To generate a dataset with the proposed methodology you can follow the following steps:
 
 ### 1. Conda environment and requirements
 
@@ -36,10 +42,13 @@ bash dataset/generate_dataset.sh
 
 cd evaluation
 
+When ground-truth blurry-sharp pairs are available (GoPro, DVD, REDS, RealBlur) we used the following code to quantify the restoration quality. We adapted from [RealBlur](https://github.com/rimchang/RealBlur)  repository.
+
 ```
 python evaluation_parallel_ecc.py -b datasets/RealBlur/test/blur -s datasets/RealBlur/test/gt -r /results_deblurring/resultsRealBlur/SRN_trained_with_ADE/RealBlur_ade_ade_sat_483900
 ```
 
+For Kohler dataset, we used:
 ```
 python evaluation_Kohler_parallel_ecc.py -b /media/carbajal/OS/data/datasets/KohlerDataset/BlurryImages -s /media/carbajal/OS/data/datasets/KohlerDataset/GroundTruthImg -r /media/carbajal/OS/data/results_deblurring/results_Kohler/cvpr2022/Kohler_ade_ade_sat_min_400_gf1_483900
 ```
