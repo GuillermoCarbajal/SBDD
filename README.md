@@ -29,8 +29,8 @@ Download ADE20K and the kernels used to generate the dataset:
 
 Replace the following lines in the script dataset/generate_dataset.sh by your ADE20K and kernels folder.
 
-ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K/ADE20K_2016_07_26/images'
-KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'
+ADE_DIR='data/datasets/ADE20K/ADE20K_2016_07_26/images'      
+KERNELS_DIR='data/datasets/kernel_dataset'
 
 Then, run:
 
