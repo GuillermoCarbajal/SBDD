@@ -23,7 +23,7 @@ pip install -r dataset/requirements.txt
 Download ADE20K and the kernels used to generate the dataset:
 
 [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)        
-[kernels_SBDD](https://drive.google.com/file/d/1sja5TSzogYxyQy6i7NQ-Tk8xuHrOqbnR/view?usp=sharing)
+[kernels_SBDD](https://www.dropbox.com/s/dlcbarx6qw2m23u/kernelsSBDD.zip?dl=0)
 
 ### 3. Generation
 
