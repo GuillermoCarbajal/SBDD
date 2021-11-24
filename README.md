@@ -7,7 +7,7 @@
 
 ## SBDD Dataset 
 
-The dataset used for train models can be downloaded from [here](https://www.dropbox.com/sh/8befj2azfz9w5rs/AAC_R9IB4Z3MCeFFg2OaPIAfa?dl=0)
+The dataset used for train models can be downloaded from [here](https://www.dropbox.com/sh/og1v65wmpf3mwdj/AABZoElW1InW3k5W4lHTYPXua?dl=0)
 
 ## Dataset Generation
 
