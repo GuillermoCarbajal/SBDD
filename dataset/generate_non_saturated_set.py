@@ -233,9 +233,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--kernels_dir', '-kd', type=str, help='kernels root folder', required=False,
-                        default='/media/carbajal/OS/data/datasets/kernel_dataset/size_33_exp_1')
+                        default='data/datasets/kernel_dataset/size_33_exp_1')
     parser.add_argument('--ade_dir', '-ad', type=str, help='ADE dir folder', required=False,
-                        default='/media/carbajal/OS/data/datasets/ADE20K/ADE20K_2016_07_26/images')
+                        default='data/datasets/ADE20K/ADE20K_2016_07_26/images')
     parser.add_argument('--kernels_list', '-kl', type=str, help='kernels list', required=False,
                         default='blur_kernels_train.txt')
     parser.add_argument('--ade_list', '-al', type=str, help='ADE list', required=False, default='non_saturated_set_list_small.txt')
