@@ -51,5 +51,5 @@ python evaluation_parallel_ecc.py -b datasets/RealBlur/test/blur -s datasets/Rea
 
 For Kohler dataset, we used:
 ```
-python evaluation_Kohler_parallel_ecc.py -b /media/carbajal/OS/data/datasets/KohlerDataset/BlurryImages -s /media/carbajal/OS/data/datasets/KohlerDataset/GroundTruthImg -r /media/carbajal/OS/data/results_deblurring/results_Kohler/cvpr2022/Kohler_ade_ade_sat_min_400_gf1_483900
+python evaluation_Kohler_parallel_ecc.py -b datasets/KohlerDataset/BlurryImages -s datasets/KohlerDataset/GroundTruthImg -r results_Kohler/cvpr2022/Kohler_ade_ade_sat_min_400_gf1_483900
 ```
