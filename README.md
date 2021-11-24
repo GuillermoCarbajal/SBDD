@@ -42,7 +42,7 @@ bash dataset/generate_dataset.sh
 
 cd evaluation
 
-When ground-truth blurry-sharp pairs are available (GoPro, DVD, REDS, RealBlur) we used the following code to quantify the restoration quality. We adapted from [RealBlur](https://github.com/rimchang/RealBlur)  repository.
+When ground-truth blurry-sharp pairs are available (GoPro, DVD, REDS, RealBlur) we used the following code to quantify the restoration quality. We adapted the evaluation code from [RealBlur](https://github.com/rimchang/RealBlur)  repository.
 
 ```
 python evaluation_parallel_ecc.py -b datasets/RealBlur/test/blur -s datasets/RealBlur/test/gt -r /results_deblurring/resultsRealBlur/SRN_trained_with_ADE/RealBlur_ade_ade_sat_483900
