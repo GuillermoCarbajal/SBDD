@@ -1,6 +1,6 @@
 # Path to ADE dataset images folder,  ADE_DIR=path_to/ADE20K_2016_07_26/images
-ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K/ADE20K_2016_07_26/images'
-KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'
+ADE_DIR='datasets/ADE20K/ADE20K_2016_07_26/images'
+KERNELS_DIR='datasets/kernel_dataset'
 OUTPUT_DIR='SBDD_gamma'
 
 unzip $KERNELS_DIR/kernelsSBDD.zip -d $KERNELS_DIR
