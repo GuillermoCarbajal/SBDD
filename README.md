@@ -35,7 +35,8 @@ KERNELS_DIR='data/datasets/kernel_dataset'
 Then, run:
 
 ```
-bash dataset/generate_dataset.sh
+cd dataset
+bash generate_dataset.sh
 ```
 
 ## Models Evaluation

@@ -2,6 +2,7 @@ import os
 from skimage.io import imread, imsave
 import numpy as np
 from PIL import Image
+#from scipy.ndimage import convolve
 from scipy.signal import fftconvolve
 from skimage.color import rgb2gray, rgb2hsv, hsv2rgb
 from skimage.util import random_noise
@@ -11,47 +12,9 @@ from skimage.morphology import closing, square
 from skimage.filters import gaussian
 import time
 import multiprocessing
+import pickle as pkl
+import utils_ade20k
 
-
-def get_corrected_raw_names(image_fullname):
-
-    # Read attributes
-    # format: '%03d; %s;  %d; %s; "%s"\n', instance, name, whole(j)==0, crop, atr
-    # format: Instance, part level (0 for objects), crop, class name, corrected_raw_name, list-of-attributes
-    with open(image_fullname.replace('.jpg', '_atr.txt'), 'r') as f:
-        text = f.readlines()
-    corrected_raw_names, part_level = [], []
-    for line in text:
-        data = line.split(' # ')
-        is_part = int(data[1]) > 0
-        if not is_part:
-            corrected_raw_names.append(data[4])
-
-    return corrected_raw_names
-
-def get_segmentation_info(image_fullname):
-    '''
-    :param image_fullname:
-    :param sharp_image:
-    :return:
-        sharp_image_crop:
-        B_crop:
-        values_of_segmented_instances_in_crop:
-        values_of_segmented_instances:
-        corrected_raw_name: used to know whether is a person or a car
-    '''
-
-    seg_filename = image_fullname.replace('.jpg', '_seg.png')
-    seg_img = np.array(Image.open(seg_filename))
-
-    B = np.array(seg_img)[:, :, 2]
-    values_of_segmented_instances = np.unique(B)
-
-    corrected_raw_names = get_corrected_raw_names(image_fullname)
-
-    values_of_segmented_instances_in_crop = np.unique(B)
-
-    return B, values_of_segmented_instances_in_crop, values_of_segmented_instances, corrected_raw_names
 
 
 def generate_blurry_sharp_pair(sharp_image_crop, kernels, masks_to_send, kernel_size=33, gray_scale=False,
@@ -59,7 +22,6 @@ def generate_blurry_sharp_pair(sharp_image_crop, kernels, masks_to_send, kernel_
                                jitter_illumination=1.0, poisson_noise=False, saturation_mask=None, gaussian_noise=False, noise_std=0.01):
 
     K = kernel_size
-    M,N,C = sharp_image_crop.shape
 
     if gray_scale:
         sharp_image_crop = (255*rgb2gray(sharp_image_crop)).astype(np.uint8)
@@ -72,7 +34,7 @@ def generate_blurry_sharp_pair(sharp_image_crop, kernels, masks_to_send, kernel_
     if gamma_correction:
         sharp_image_crop = 255.0*( (sharp_image_crop/255.0)** gamma_factor)
 
-    
+    M,N,C = sharp_image_crop.shape
     for c in range(C):
         saturation_mask[:, :, c] = gaussian(closing(saturation_mask[:, :, c], square(3)).astype(np.float32), sigma=1)
 
@@ -84,12 +46,13 @@ def generate_blurry_sharp_pair(sharp_image_crop, kernels, masks_to_send, kernel_
             sharp_image_crop_sat = rgb2hsv(sharp_image_crop/255)
             sharp_image_crop_non_sat = rgb2hsv(sharp_image_crop/255)
 
-        random_low = 0.75*jitter_illumination * np.random.rand()
+        random_low = 0.25*jitter_illumination * np.random.rand() #0.75*jitter_illumination * np.random.rand()
         random_high = jitter_illumination * np.random.rand()
         #print('random low: ', random_low, ' random_high: ', random_high)
-        sharp_image_crop_non_sat[:, :, 2] *= (0.25 + random_low)
-        sharp_image_crop_sat[:,:,2]*=(0.25 + random_low  + random_high)
+        sharp_image_crop_non_sat[:, :, 2] *= (0.25 + random_low) # (0.05 + random_low) #(0.25 + random_low)
+        sharp_image_crop_sat[:,:,2]*=  (0.25 + random_low  + random_high) #(0.75 + random_high) #(0.25 + random_low  + random_high)
         sharp_image_crop = 255*hsv2rgb(sharp_image_crop_sat * saturation_mask) + 255*hsv2rgb(sharp_image_crop_non_sat * (1-saturation_mask))
+        #sharp_image_crop = (1.5*sharp_image_crop).astype(np.uint8)
 
 
     # blurry image is generated
@@ -122,16 +85,14 @@ def generate_blurry_sharp_pair(sharp_image_crop, kernels, masks_to_send, kernel_
 
     return blurry_image, sharp_image_crop
 
-def process(n_filename):
+def process(n_file):
 
-    it, filename = n_filename
-    filename = filename[:-1]
+    filename = index_ade20k['filename'][n_file]
     img_name = filename.split('/')[-1]
     img_name, ext = img_name.split('.')
-    image_fullname = os.path.join(ADE_DIR, filename)
-    print('%d/%d :' % (it, len(files)), img_name)
+    full_file_name = '{}/{}'.format(index_ade20k['folder'][n_file], index_ade20k['filename'][n_file])
+    image_fullname = os.path.join(ADE_DIR, full_file_name)
     sharp_image = imread(image_fullname)
-    saturation_mask = np.zeros_like(sharp_image, dtype=np.float32)
 
     if len(sharp_image.shape) == 3:
         M, N, C = sharp_image.shape
@@ -141,15 +102,20 @@ def process(n_filename):
     min_size = np.min([M, N])
 
     if C > 1 and (min_size > min_img_size):
-        # An interesting crop is chosen
-        B, values_of_segmented_instances_in_crop, values_of_segmented_instances, corrected_raw_names = get_segmentation_info(
-            image_fullname)
+        #B, values_of_segmented_instances_in_crop, values_of_segmented_instances, corrected_raw_names = get_segmentation_info(
+        #    image_fullname)
 
+        info = utils_ade20k.loadAde20K(image_fullname)
+        B =  imread(info['segm_name'])
+        objs_info = info['objects']
+        instances_indices = objs_info['instancendx']
+        instances_classes = objs_info['class']
+        instances_corrected_raw_name = objs_info['corrected_raw_name']
         for n in range(n_images):
 
-            light_masks_filename = os.path.join(output_dir, 'light_masks', img_name + '_%d.png' % n)
-            blurry_filename = os.path.join(output_dir, 'blurry', img_name + '_%d.png' % n)
-            sharp_filename = os.path.join(output_dir, 'sharp', img_name + '_%d.png' % n)
+            light_masks_filename = os.path.join(output_dir, 'light_masks', img_name + '_%d.jpg' % n)
+            blurry_filename = os.path.join(output_dir, 'blurry', img_name + '_%d.jpg' % n)
+            sharp_filename = os.path.join(output_dir, 'sharp', img_name + '_%d.jpg' % n)
 
             if not os.path.exists(light_masks_filename) or not os.path.exists(blurry_filename)  or not os.path.exists(sharp_filename) :
                 # structures to save mask and kernels.
@@ -169,12 +135,17 @@ def process(n_filename):
                 # mask = mask[kernel_size // 2: -kernel_size // 2 + 1, kernel_size // 2: -kernel_size // 2 + 1]
                 masks.append(mask)
 
+                saturation_mask = np.zeros_like(sharp_image, dtype=np.float32)
                 num_objects_blurred = 0
-                for i, val in enumerate(values_of_segmented_instances_in_crop):
-                    index = np.argwhere(values_of_segmented_instances == val)[0][0]
-                    instance_label = corrected_raw_names[index - 1]
-                    if instance_label in labels_to_blur and index > 0:  # primer elemento no tiene etiqueta
-                        num_pix = np.sum(B == val)
+                for obj_id, obj_label in zip(instances_indices,instances_classes) :
+
+                    if obj_label in labels_to_blur:  # primer elemento no tiene etiqueta
+                        file_instance = '{}/instance_{:03}_{}'.format(
+                            image_fullname.replace('.jpg', ''), obj_id, filename.replace('.jpg', '.png'))
+                        #print(file_instance)
+                        B = imread(file_instance)
+                        B[B < 255] = 0
+                        num_pix = np.sum(B == 255)
                         if num_pix > min_objetc_area and num_objects_blurred < max_objects_to_blur:  # minima area para borronear el objeto
                             num_objects_blurred += 1
                             # kernel = get_random_kernel()
@@ -182,16 +153,24 @@ def process(n_filename):
                             kernel_name = kernels_list[idx_kernel][0:-1].split('/')
                             kernel = io.loadmat(os.path.join(Kernels_Dir, kernel_name[1]))['K']
 
-                            mask = np.zeros_like(B, dtype=np.float32)  # nueva mascara
-                            mask[B == val] = 1  # vale uno en el objeto
-                            masks[0][
-                                B == val] = 0  # se ponen a cero las posiciones del background que fueron sustituidas
+                            mask = B.copy()
+                            # The 0 index in seg_mask corresponds to background (not annotated) pixels
+                            masks[0] [mask>0] = 0    # se ponen a cero las posiciones del background que fueron sustituidas
+
+                            #mask = np.zeros_like(B, dtype=np.float32)  # nueva mascara
+                            #mask[B == obj_id] = 1  # vale uno en el objeto
+                            #masks[0][
+                            #    B == obj_id] = 0  # se ponen a cero las posiciones del background que fueron sustituidas
                             # mask=mask[kernel_size//2: -kernel_size//2+1, kernel_size//2: -kernel_size//2+1]
 
                             kernels.append(kernel)
                             masks.append(mask)
-                    elif instance_label in light_labels:
-                        light_mask = B == val
+                    elif obj_label in light_labels:
+                        file_instance = '{}/{}/instance_{:03}_{}'.format(
+                            ADE_DIR, full_file_name.replace('.jpg', ''), obj_id, filename.replace('.jpg', '.png'))
+                        #print(file_instance)
+                        B = imread(file_instance)
+                        light_mask = B == 255
                         candidate_region = sharp_image > 250
                         candidate_region = np.max(candidate_region, axis=2)
 
@@ -200,8 +179,8 @@ def process(n_filename):
 
                 num_saturated_pixels = np.sum(saturation_mask > 0)
                 saturation_percentage = np.float(num_saturated_pixels) / (M * N)
-                #print('Number of saturated pixels simulated: %d, percentage = %.04f ' % (
-                #    num_saturated_pixels, saturation_percentage))
+                print('%s: number of saturated pixels simulated: %d, percentage = %.04f ' % (img_name,
+                    num_saturated_pixels, saturation_percentage))
 
                 if saturation_percentage > 1.0 / 1000:
                     # saturation_mask = gaussian(saturation_mask)
@@ -247,24 +226,24 @@ def process(n_filename):
                         sharp_image_crop[kernel_size // 2:-(kernel_size // 2), kernel_size // 2:-(kernel_size // 2)], 0,
                         255).astype(np.uint8), check_contrast=False)
                     # imsave(os.path.join(output_dir, f'kernels_{it}.png'), kernels_to_send)
+                    print('%s utilized' % img_name)
+                else:
+                    print('%s discarded' % img_name)
 
-def multiprocessing_func(n_file_name):
+def multiprocessing_func(n_file):
     time.sleep(2)
-    n, file_name = n_file_name
-    print('{}: filename is {}'.format(n, file_name ))
-    process(n_file_name)
+    process(n_file)
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--kernels_dir', '-kd', type=str, help='kernels root folder', required=False,
-                        default='/media/carbajal/OS/data/datasets/kernel_dataset/size_33_exp_1/')
+                        default='/data_ssd/users/carbajal/kernel_dataset/size_33_exp_1/train')
     parser.add_argument('--ade_dir', '-ad', type=str, help='ADE dir folder', required=False,
-                        default='/media/carbajal/OS/data/datasets/ADE20K/ADE20K_2016_07_26/images')
-    parser.add_argument('--kernels_list', '-kl', type=str, help='kernels list', required=False,
-                        default='blur_kernels_train.txt')
-    parser.add_argument('--ade_list', '-al', type=str, help='ADE list', required=False,
-                        default='saturated_set_list_small.txt')
+                        default='/data_ssd/users/carbajal/ADE20K_new/carbajal_776b3c5f')
+    parser.add_argument('--kernels_list', '-kl', type=str, help='kernels list', required=False, default='blur_kernels_train.txt')
+    parser.add_argument('--ade_index', '-al', type=str, help='ADE list', required=False,
+                        default='/data_ssd/users/carbajal/ADE20K_new/carbajal_776b3c5f/ADE20K_2021_17_01/index_ade20k.pkl')
     parser.add_argument('--K', type=int, help='kernel size', required=False, default=33)
     parser.add_argument('--min_img_size', type=int, help='min crop size', required=False, default=400)
     parser.add_argument('--min_object_area', type=int, help='min object area', required=False, default=400)
@@ -278,12 +257,12 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     ADE_DIR = opt.ade_dir
     Kernels_Dir = opt.kernels_dir
-    training_files_list = opt.ade_list
+    ade_index = opt.ade_index
     kernels_images_list = opt.kernels_list
     output_dir = opt.output_dir
     min_img_size = opt.min_img_size
     kernel_size = opt.K
-    labels_to_blur = ['person', 'car']
+    labels_to_blur = ['car']
     # light_labels = ['bulb', 'ceiling recessed light', 'ceiling spotlight', 'ceiling spotlights', 'christmas lights',
     #                 'flashlight', 'floor light', 'floor recessed light', 'floor spotlight', 'light troffer',
     #                 'lighthouse', 'lighting', 'night light', 'spotlight', 'spotlights', 'street light', 'street lights',
@@ -305,8 +284,51 @@ if __name__ == '__main__':
     if not os.path.exists(os.path.join(output_dir, 'light_masks')):
         os.makedirs(os.path.join(output_dir, 'light_masks'))
 
-    with open(training_files_list) as f:
-        files = f.readlines()
+    #with open(training_files_list) as f:
+    #    files = f.readlines()
+
+    with open(ade_index, 'rb') as f:
+        index_ade20k = pkl.load(f)
+
+    print("File loaded, description of the attributes:")
+    print('--------------------------------------------')
+    for attribute_name, desc in index_ade20k['description'].items():
+        print('* {}: {}'.format(attribute_name, desc))
+    print('--------------------------------------------\n')
+
+
+    def get_person_and_licence_plate_ids(index_ade20k):
+
+        person_ids = []
+        license_plate_ids = []
+        objects_names = index_ade20k['objectnames']
+        for i, labels in enumerate(objects_names):
+            if 'person' in labels:
+                person_ids.append(i)
+                print('person label found with indice %d: %s' % (i, labels))
+            if 'license plate' in labels:
+                license_plate_ids.append(i)
+                print('license plate label found with indice %d: %s' % (i, labels))
+
+        return person_ids, license_plate_ids
+
+
+    def get_no_burred_images_indices(index_ade20k):
+
+        objects_presence = index_ade20k['objectPresence']
+        num_objects, num_images = objects_presence.shape
+        person_ids, license_plate_ids = get_person_and_licence_plate_ids(index_ade20k)
+        num_persons = np.sum(objects_presence[person_ids, :], axis=0)
+        print('%d/%d imágenes tienen personas' % (np.sum(num_persons > 0), num_images))
+        num_license_plates = np.sum(objects_presence[license_plate_ids, :], axis=0)
+        print('%d/%d imágenes tienen matrículas' % (np.sum(num_license_plates > 0), num_images))
+        indices = np.logical_and(num_persons == 0, num_license_plates == 0)
+        print('%d imágenes no tienen ni personas ni matrículas' % np.sum(indices))
+
+        return np.arange(num_images)[indices]
+
+
+    indices = get_no_burred_images_indices(index_ade20k)
 
     with open(kernels_images_list) as f:
         kernels_list = f.readlines()
@@ -314,9 +336,10 @@ if __name__ == '__main__':
     #files = files[:100]
     starttime = time.time()
 
-    pool = multiprocessing.Pool(8)
-    pool.map(multiprocessing_func, enumerate(files))
+    pool = multiprocessing.Pool(4)
+    pool.map(multiprocessing_func, indices)
     pool.close()
 
 
+    print()
     print('Time taken = {} seconds'.format(time.time() - starttime))
