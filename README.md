@@ -21,8 +21,8 @@ pip install -r dataset/requirements.txt
 
 Download COCO, ADE20K and the kernels used to generate the dataset:
 
-[COCO (2017 train images)](https://cocodataset.org/#download)
-[ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)        
+[COCO (2017 train images)](https://cocodataset.org/#download)       
+[ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)                
 [kernels_SBDD](https://iie.fing.edu.uy/~carbajal/SBDD/kernelsSBDD.zip)
 
 ### 3. Generation
