@@ -29,10 +29,10 @@ Download COCO, ADE20K and the kernels used to generate the dataset:
 
 Replace the following lines in the script dataset/generate_dataset.sh by your COCO, ADE20K and kernels folder.
 
-ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f'
-ADE_INDEX='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f/ADE20K_2021_17_01/index_ade20k.pkl'
-COCO_DIR='/media/carbajal/OS/data/datasets/COCO/images/train2017'
-KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'
+ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f'     
+ADE_INDEX='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f/ADE20K_2021_17_01/index_ade20k.pkl'      
+COCO_DIR='/media/carbajal/OS/data/datasets/COCO/images/train2017'       
+KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'        
 
 Then, run:
 
