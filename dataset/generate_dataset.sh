@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f'
 ADE_INDEX='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f/ADE20K_2021_17_01/index_ade20k.pkl'
 COCO_DIR='/media/carbajal/OS/data/datasets/COCO/images/train2017'
 KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'
+=======
+# Path to ADE dataset images folder,  ADE_DIR=path_to/ADE20K_2016_07_26/images
+ADE_DIR='datasets/ADE20K/ADE20K_2016_07_26/images'
+KERNELS_DIR='datasets/kernel_dataset'
+>>>>>>> 233bf116193c689ea198a0f0369125ba6be872c7
 OUTPUT_DIR='SBDD_gamma'
 
 
