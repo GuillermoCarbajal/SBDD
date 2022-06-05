@@ -262,15 +262,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--kernels_dir', '-kd', type=str, help='kernels root folder', required=False,
-<<<<<<< HEAD
                         default='/media/carbajal/OS/data/datasets/kernel_dataset/size_33_exp_1/train')
     parser.add_argument('--coco_root_dir', '-ad', type=str, help='COCO dir folder', required=False,
                         default='/media/carbajal/OS/data/datasets/COCO/images/train2017')
-=======
-                        default='data/datasets/kernel_dataset/size_33_exp_1')
-    parser.add_argument('--ade_dir', '-ad', type=str, help='ADE dir folder', required=False,
-                        default='data/datasets/ADE20K/ADE20K_2016_07_26/images')
->>>>>>> 233bf116193c689ea198a0f0369125ba6be872c7
     parser.add_argument('--kernels_list', '-kl', type=str, help='kernels list', required=False,
                         default='blur_kernels_train.txt')
     parser.add_argument('--coco_json_path', '-al', type=str, help='json file', required=False,
