@@ -1,7 +1,6 @@
 from PIL import Image
 import matplotlib._color_data as mcd
 import cv2
-import ipdb
 import json
 import numpy as np
 import os
