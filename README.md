@@ -6,7 +6,7 @@
 
 ## SBDD Dataset 
 
-The dataset used for train models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD/SBDD_gamma.zip)
+The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD/SBDD_gamma.zip)
 
 ## Dataset Generation
 
