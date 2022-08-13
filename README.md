@@ -1,5 +1,7 @@
 # Rethinking Motion Deblurring Training: A Segmentation-Based Method for Simulating Non-Uniform Motion Blurred Images
 
+| <img src="figs/motivation.png"  height=224 width=224 alt="SRN Results when trained with SBDD  "> |
+
 ## Trained models
 
 [SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with SBDD and also other datasets can be downloaded from below.  
