@@ -15,10 +15,6 @@ blurred images (as shown in the figure below).
 | SRN   | [provided](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD_gamma.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD.zip)  |    
 | DeepDeblur |[provided](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [provided](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/deep-deblur-models/DeepDeblur-SBDD_gamma/model-200.pt)  |    |      
 
-## SBDD Dataset 
-
-The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD/SBDD_gamma.zip)
-
 ## Testing SRN Models
 
 ### 1. Conda environment and requirements
@@ -72,22 +68,6 @@ Download COCO, ADE20K and the kernels used to generate the dataset:
 [COCO (2017 train images)](https://cocodataset.org/#download)       
 [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)                
 [kernels_SBDD](https://iie.fing.edu.uy/~carbajal/SBDD/kernelsSBDD.zip)
-
-### 3. Generation
-
-Replace the following lines in the script dataset/generate_dataset.sh by your COCO, ADE20K and kernels folder.
-
-ADE_DIR='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f'     
-ADE_INDEX='/media/carbajal/OS/data/datasets/ADE20K_new/carbajal_776b3c5f/ADE20K_2021_17_01/index_ade20k.pkl'      
-COCO_DIR='/media/carbajal/OS/data/datasets/COCO/images/train2017'       
-KERNELS_DIR='/media/carbajal/OS/data/datasets/kernel_dataset'        
-
-Then, run:
-
-```
-cd dataset
-bash generate_dataset.sh
-```
 
 ## Models Evaluation
 
