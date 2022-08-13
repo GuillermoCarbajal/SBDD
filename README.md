@@ -2,11 +2,36 @@
 
 ## Trained models
 
-[SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with SBDD can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD/trained_models.zip)
+[SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with SBDD and also other datasets can be downloaded from below.  
+
+| Arch \ Dataset |   GoPro |  REDS  |   SBDD-gamma  | SBDD  |          
+|-------|:---------------------|:--------------------|---------------------|-------------|         
+| SRN   | [provided](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD_gamma.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD.zip)  |    
+| DeepDeblur |[provided](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [provided](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/deep-deblur-models/DeepDeblur-SBDD_gamma/model-200.pt)  |    |      
 
 ## SBDD Dataset 
 
 The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD/SBDD_gamma.zip)
+
+## Testing SRN Models
+
+### 1. Conda environment and requirements
+```
+conda create -n srn-py27 python=2.7
+conda activate srn-py27
+pip install scipy scikit-image numpy tensorflow-gpu==1.12
+conda install cudnn==7.6.5
+```
+
+### 2. Test the model
+
+```
+cd SRN-Model
+python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir model_folder --step iteration_number
+
+# Example
+# python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir  /media/carbajal/OS/data/models//srn_models/COCO10k_mob2_ADENew_aug_25k --step 673800
+```
 
 ## Dataset Generation
 
