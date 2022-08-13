@@ -8,7 +8,7 @@ blurred images (as shown in the figure below).
 
 ## Trained models
 
-[SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with SBDD and also other datasets can be downloaded from below.  
+[SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
 
 | Arch \ Dataset |   GoPro |  REDS  |   SBDD-gamma  | SBDD  |          
 |-------|:---------------------|:--------------------|---------------------|-------------|         
