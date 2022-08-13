@@ -10,11 +10,15 @@ def parse_args():
     parser = argparse.ArgumentParser(description='deblur arguments')
     parser.add_argument('--phase', type=str, default='test', help='determine whether train or test')
     parser.add_argument('--datalist', type=str, default='./datalist_gopro.txt', help='training datalist')
+    parser.add_argument('--validation_list', type=str, default='', help='validation datalist') # added by GC
     parser.add_argument('--model', type=str, default='color', help='model type: [lstm | gray | color]')
     parser.add_argument('--batch_size', help='training batch size', type=int, default=16)
     parser.add_argument('--epoch', help='training epoch number', type=int, default=4000)
     parser.add_argument('--lr', type=float, default=1e-4, dest='learning_rate', help='initial learning rate')
     parser.add_argument('--gpu', dest='gpu_id', type=str, default='0', help='use gpu or cpu')
+    parser.add_argument('--crop_size', type=int, default=256, help='crop size used for training')
+    parser.add_argument('--nScales', type=int, default=3)
+    parser.add_argument('--scaleFactor', type=float, default=0.5)
     parser.add_argument('--height', type=int, default=720,
                         help='height for the tensorflow placeholder, should be multiples of 16')
     parser.add_argument('--width', type=int, default=1280,
@@ -23,6 +27,13 @@ def parse_args():
                         help='input path for testing images')
     parser.add_argument('--output_path', type=str, default='./testing_res',
                         help='output path for testing images')
+    # if generator verbose is true, useful data is printed for debugging purposes
+    parser.add_argument('--generator_verbose', type=bool, default=False)
+    # the following two arguments are added by GC in order to be able to run any model
+    parser.add_argument('--training_dir', type=str, default='')
+    parser.add_argument('--step', type=int, default=-1)
+    parser.add_argument('--std_dev_gauss_noise', type=float, default=0., help='Std Dev. of the additive gaussian noise added to the blurry images')
+    parser.add_argument('--gamma_factor', type=float, default=1., help='gamma correction factor')
     args = parser.parse_args()
     return args
 
