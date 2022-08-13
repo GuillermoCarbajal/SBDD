@@ -1,3 +1,0 @@
-numpy
-scikit-image==0.17.2
-pycocotools
