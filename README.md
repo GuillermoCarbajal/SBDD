@@ -35,7 +35,7 @@ python run_model.py --input_path=../sample_images --output_path=../sample_result
 # python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir  /media/carbajal/OS/data/models//srn_models/COCO10k_mob2_ADENew_aug_25k --step 673800
 ```
 
-<img src="figs/srn.png"  height=575 width=1155 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/srn.png"  height=575 width=1200 alt="SRN Results when trained with SBDD  ">   
 
 
 ## Testing DeepDeblur Models
