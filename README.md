@@ -52,22 +52,6 @@ python main.py --save_dir SAVE_DIR --demo true --demo_input_dir INPUT_DIR_NAME -
 
 <img src="figs/deep_deblur.png"  height=700 width=980 alt="DeepDeblur results when trained with SBDD ($\gamma$) ">  
 
-## Dataset Generation
-
-To generate a dataset with the proposed methodology you can follow the following steps:
-
-### 1. Conda environment and requirements
-
-conda create -n SBDD python=3.8     
-pip install -r dataset/requirements.txt    
-
-### 2.COCO, ADE20K and kernels datasets
-
-Download COCO, ADE20K and the kernels used to generate the dataset:
-
-[COCO (2017 train images)](https://cocodataset.org/#download)       
-[ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)                
-[kernels_SBDD](https://iie.fing.edu.uy/~carbajal/SBDD/kernelsSBDD.zip)
 
 ## Models Evaluation
 
