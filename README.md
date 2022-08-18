@@ -6,6 +6,10 @@ State-of-the-art deblurring neural networks achieve spectacular restorations in 
 blurred images (as shown in the figure below).            
 <img src="figs/motivation.png"  height=600 width=1200 alt="SRN Results when trained with SBDD  ">   
 
+## SBDD Dataset 
+
+The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_gamma.zip)
+
 ## Trained models
 
 [SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
