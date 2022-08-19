@@ -6,14 +6,18 @@ State-of-the-art deblurring neural networks achieve spectacular restorations in 
 blurred images (as shown in the figure below).            
 <img src="figs/motivation.png"  height=600 width=1200 alt="SRN Results when trained with SBDD  ">   
 
+## SBDD Dataset 
+
+The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_gamma.zip)
+
 ## Trained models
 
 [SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
 
 | Arch \ Dataset |   GoPro |  REDS  |   SBDD-gamma  | SBDD  |          
 |-------|:---------------------|:--------------------|---------------------|-------------|         
-| SRN   | [provided](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD_gamma.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/srn-models/SRN-SBDD.zip)  |    
-| DeepDeblur |[provided](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [provided](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_models/deep-deblur-models/DeepDeblur-SBDD_gamma/model-200.pt)  |    |      
+| SRN   | [provided](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN-SBDD_gamma.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN-SBDD.zip)  |    
+| DeepDeblur |[provided](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [provided](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/deep-deblur-models/SBDD_gamma.zip)  |    |      
 
 ## Testing SRN Models
 
@@ -35,7 +39,7 @@ python run_model.py --input_path=../sample_images --output_path=../sample_result
 # python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir  /media/carbajal/OS/data/models//srn_models/COCO10k_mob2_ADENew_aug_25k --step 673800
 ```
 
-<img src="figs/srn.png"  height=575 width=1155 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/srn.png"  height=575 width=1200 alt="SRN Results when trained with SBDD  ">   
 
 
 ## Testing DeepDeblur Models
@@ -52,22 +56,6 @@ python main.py --save_dir SAVE_DIR --demo true --demo_input_dir INPUT_DIR_NAME -
 
 <img src="figs/deep_deblur.png"  height=700 width=980 alt="DeepDeblur results when trained with SBDD ($\gamma$) ">  
 
-## Dataset Generation
-
-To generate a dataset with the proposed methodology you can follow the following steps:
-
-### 1. Conda environment and requirements
-
-conda create -n SBDD python=3.8     
-pip install -r dataset/requirements.txt    
-
-### 2.COCO, ADE20K and kernels datasets
-
-Download COCO, ADE20K and the kernels used to generate the dataset:
-
-[COCO (2017 train images)](https://cocodataset.org/#download)       
-[ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)                
-[kernels_SBDD](https://iie.fing.edu.uy/~carbajal/SBDD/kernelsSBDD.zip)
 
 ## Models Evaluation
 
