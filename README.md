@@ -1,4 +1,6 @@
 # Rethinking Motion Deblurring Training: A Segmentation-Based Method for Simulating Non-Uniform Motion Blurred Images
+G Carbajal, P Vitoria, P Musé, J Lezama
+
 
 > Successful training of end-to-end deep networks for real motion deblurring requires datasets of sharp/blurred image pairs that are realistic and diverse enough to achieve generalization to real blurred images. Obtaining such datasets remains a challenging task. In this paper, we first review the limitations of existing deblurring benchmark datasets from the perspective of generalization to blurry images in the wild. Secondly, we propose an efficient procedural methodology to generate sharp/blurred image pairs, based on a simple yet effective model for the formation of blurred images. This allows generating virtually unlimited realistic and diverse training pairs. We demonstrate the effectiveness of the proposed dataset by training existing deblurring architectures on the simulated pairs and evaluating them across four standard datasets of real blurred images. We observed superior generalization performance for the ultimate task of deblurring real motion-blurred photos of dynamic scenes when training with the proposed method.
 
