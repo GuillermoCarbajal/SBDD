@@ -72,3 +72,15 @@ For Kohler dataset, we used:
 ```
 python evaluation_Kohler_parallel_ecc.py -b datasets/KohlerDataset/BlurryImages -s datasets/KohlerDataset/GroundTruthImg -r results_Kohler/Kohler_with_SBDD
 ```
+
+
+## Reference 
+```
+@article{carbajal2022rethinking,
+  title={Rethinking Motion Deblurring Training: A Segmentation-Based Method for Simulating Non-Uniform Motion Blurred Images},
+  author={Carbajal, Guillermo and Vitoria, Patricia and Mus{\'e}, Pablo and Lezama, Jos{\'e}},
+  journal={arXiv preprint arXiv:2209.12675},
+  year={2022}
+}
+```
+
