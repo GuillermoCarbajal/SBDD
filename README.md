@@ -8,18 +8,16 @@ Secondly, based on this analysis, we propose an efficient procedural methodology
 State-of-the-art deblurring neural networks achieve spectacular restorations in the GoPro dataset, but generalize poorly to real non-uniformly blurred images (as shown in the figure below).            
 <img src="figs/motivation.png"  height=600 width=1200 alt="SRN Results when trained with SBDD  ">   
 
-## SBDD Dataset 
-
-The dataset used to train the models (with gamma correction) can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_gamma.zip)
-
 ## Trained models
 
 [SRN](https://github.com/jiangsutx/SRN-Deblur) and [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
 
-| Arch \ Dataset |   GoPro |  REDS  |   SBDD-gamma  | SBDD  |          
-|-------|:---------------------|:--------------------|---------------------|-------------|         
-| SRN   | [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN-SBDD_gamma.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN-SBDD.zip)  |    
-| DeepDeblur |[public model](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [public model](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/deep-deblur-models/SBDD_gamma.zip)  |    |      
+| Arch \ Dataset |   GoPro |  REDS  |  SBDD  |          
+|-------|:---------------------|:--------------------|---------------------|         
+| SRN   | [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN-SBDD_gamma.zip) |    
+| DeepDeblur |[public model](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [public model](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/deep-deblur-models/SBDD_gamma.zip) |
+| MIMO-UNet+ |[public model]()|  | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/MIMO_UNet+_SBDD_models.zip) |   
+| NAFNet|[public model]()| [public model]() | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/NAFNet_SBDD_models.zip) |      
 
 ## Testing SRN Models
 
@@ -77,7 +75,7 @@ Download the GoPro dataset, the segmentation masks, and the kernels used to gene
 
 ### 3. Generation
 
-Unzip the previous file and then replace the following lines in the script dataset/generate_dataset.sh by your *GOPRO_LARGE_FOLDER*, *SEGMENTATION_INFO_FOLDER* and *KERNELS_FOLDER*. 
+Unzip the previous file and then replace the following lines in the script dataset/generate_dataset.sh by your *<GOPRO_LARGE_FOLDER>*, *<SEGMENTATION_INFO_FOLDER>* and *<KERNELS_FOLDER>*. 
 
 GOPRO_LARGE_FOLDER='/media/carbajal/OS/data/datasets/GOPRO_Large/original-data'
 SEGMENTATION_INFO_FOLDER='/media/carbajal/OS/data/datasets/GoPro_detectron2_segmentation'     
@@ -90,6 +88,9 @@ cd datasets
 bash generate_dataset.sh
 ```
 
+## Sample Dataset 
+
+An instance of our dataset generation procedure can can be downloaded from [here](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_NU_ill_aug_2up_gf22_n10.zip). It was generated with non uniform blur, asuming a gamma correction factor of 2.2, and multiplicative augmentation. The parameter used to generate de dataset can be found inside the dataset folder. 
 
 ## Models Evaluation
 
