@@ -27,7 +27,7 @@ To run the models is necessary to use the [SRN](https://github.com/jiangsutx/SRN
 conda create -n srn-py27 python=2.7
 conda activate srn-py27
 pip install scipy scikit-image numpy tensorflow-gpu==1.12
-conda install cudnn==7.6.5
+conda install cudatoolkit==9.0 cudnn==7.6.5
 ```
 
 ### 2. Test the model
