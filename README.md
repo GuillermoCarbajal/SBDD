@@ -50,8 +50,10 @@ To generate a dataset with the proposed methodology you can follow the following
 
 ### 1. Conda environment and requirements
 
+```
 conda create -n SBDD python=3.8     
 pip install -r requirements.txt    
+```
 
 ### 2.GoPro dataset, segmentation masks and kernels datasets
 
