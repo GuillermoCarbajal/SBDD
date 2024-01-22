@@ -65,7 +65,7 @@ To generate a dataset with the proposed methodology you can follow the following
 conda create -n SBDD python=3.8     
 pip install -r requirements.txt    
 
-### 2.COCO, ADE20K and kernels datasets
+### 2.GoPro dataset, segmentation masks and kernels datasets
 
 Download the GoPro dataset, the segmentation masks, and the kernels used to generate the dataset:
 
