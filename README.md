@@ -41,21 +41,6 @@ python run_model.py --input_path=../sample_images --output_path=../sample_result
 
 <img src="figs/srn.png"  height=575 width=1200 alt="SRN Results when trained with SBDD  ">   
 
-
-## Testing DeepDeblur Models
-
-Please clone the DeepDeblur [repository](https://github.com/SeungjunNah/DeepDeblur-PyTorch) and follow the installation instructions. Then run:
-
-```
-python main.py --save_dir SAVE_DIR --demo true --demo_input_dir INPUT_DIR_NAME --demo_output_dir OUTPUT_DIR_NAME
-# SAVE_DIR is the experiment directory where the parameters are saved (GOPRO_L1, REDS_L1 or the provided [SBDD_gamma]())
-# SAVE_DIR is relative to DeepDeblur-PyTorch/experiment
-# demo_output_dir is by default SAVE_DIR/results
-# image dataloader looks into DEMO_INPUT_DIR, recursively
-```
-
-<img src="figs/deep_deblur.png"  height=700 width=980 alt="DeepDeblur results when trained with SBDD ($\gamma$) ">  
-
 ## Dataset Generation
 
 To generate a dataset with the proposed methodology you can follow the following steps:
