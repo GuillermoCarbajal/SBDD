@@ -17,8 +17,7 @@ We provide the [SRN](https://github.com/jiangsutx/SRN-Deblur) models trained wit
 | Arch \ Dataset |   GoPro |  REDS  |  SBDD  |          
 |-------|:---------------------|:--------------------|---------------------|         
 | SRN   | [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN_SBDD_models.zip) |    
-
-To run the models is necessary to use the [SRN](https://github.com/jiangsutx/SRN-Deblur) repository provided by the authors. Please, clone it and follow the installation instructions.        
+    
 
 ## Testing SRN Models
 
