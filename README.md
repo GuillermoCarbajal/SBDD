@@ -1,3 +1,5 @@
+Code associated to the ICIP 2024 submission:
+
 # Improving Generalization of Deep Motion Deblurring Networks: A Convolution-Based Procedure for Analyzing and Addressing the Limitations of Current Benchmark Datasets
 G Carbajal, P Vitoria, P Musé, J Lezama
 
