@@ -29,7 +29,9 @@ pip install scipy scikit-image numpy tensorflow-gpu==1.12
 conda install cudatoolkit==9.0 cudnn==7.6.5
 ```
 
-### 2. Test the model
+### 2. Test the models
+
+Clone this repo and then do the following: 
 
 ```
 cd SRN-Model
