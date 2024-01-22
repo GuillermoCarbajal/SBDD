@@ -34,6 +34,7 @@ conda install cudatoolkit==9.0 cudnn==7.6.5
 Clone this repo and then do the following: 
 
 ```
+git clone -b SRN https://github.com/GuillermoCarbajal/SBDD.git
 cd SRN-Model
 python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir model_folder --step iteration_number
 
