@@ -12,7 +12,7 @@ State-of-the-art deblurring neural networks achieve spectacular restorations in 
 
 ## Trained models
 
-[SRN](https://github.com/jiangsutx/SRN-Deblur), [DeepDeblur](https://github.com/SeungjunNah/DeepDeblur-PyTorch), [MIMO-UNet+](https://github.com/chosj95/MIMO-UNet), and [NAFNet](https://github.com/megvii-research/NAFNet) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
+[SRN](https://github.com/jiangsutx/SRN-Deblur) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD) can be downloaded from below. We also provide links to models trained with other datasets to facilitate the comparison.   
 
 | Arch \ Dataset |   GoPro |  REDS  |  SBDD  |          
 |-------|:---------------------|:--------------------|---------------------|         
