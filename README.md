@@ -17,9 +17,7 @@ State-of-the-art deblurring neural networks achieve spectacular restorations in 
 | Arch \ Dataset |   GoPro |  REDS  |  SBDD  |          
 |-------|:---------------------|:--------------------|---------------------|         
 | SRN   | [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN_SBDD_models.zip) |    
-| DeepDeblur |[public model](https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view?usp=sharing)| [public model](https://drive.google.com/file/d/1UwFNXnGBz2rCBxhvq2gKt9Uhj5FeEsa4/view?usp=sharing) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/deep-deblur-models/SBDD_gamma.zip) |
-| MIMO-UNet+ |[public model](https://drive.google.com/file/d/166sufeHcdDTgXHNbCRzTC4T6DzuflB5m/view?usp=sharing)|  | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/MIMO_UNet+_SBDD_models.zip) |   
-| NAFNet|[public model](https://github.com/megvii-research/NAFNet/blob/main/docs/GoPro.md)| [public model](https://github.com/megvii-research/NAFNet/blob/main/docs/REDS.md) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/NAFNet_SBDD_models.zip) |      
+
 
 ## Testing SRN Models
 
