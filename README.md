@@ -94,13 +94,3 @@ python evaluation_Kohler_parallel_ecc.py -b datasets/KohlerDataset/BlurryImages 
 ```
 
 
-## Reference 
-```
-@article{carbajal2022rethinking,
-  title={Rethinking Motion Deblurring Training: A Segmentation-Based Method for Simulating Non-Uniform Motion Blurred Images},
-  author={Carbajal, Guillermo and Vitoria, Patricia and Mus{\'e}, Pablo and Lezama, Jos{\'e}},
-  journal={arXiv preprint arXiv:2209.12675},
-  year={2022}
-}
-```
-
