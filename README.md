@@ -6,7 +6,7 @@ G Carbajal, P Vitoria, P Musé, J Lezama
 Secondly, based on this analysis, we propose an efficient procedural methodology to generate sharp/blurred image pairs based on a simple yet effective model for forming blurred images. This allows for generating virtually unlimited realistic and diverse training pairs. We demonstrate the effectiveness of the proposed dataset by training existing deblurring architectures on the simulated pairs and performing cross-dataset evaluation on four standard datasets of real blurred images. When training with the proposed method, we observed superior generalization performance for the ultimate task of deblurring real motion-blurred photos of dynamic scenes.
 
 State-of-the-art deblurring neural networks achieve spectacular restorations in the GoPro dataset, but generalize poorly to real non-uniformly blurred images (as shown in the figure below).            
-<img src="figs/motivation.png"  height=600 width=1200 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/motivation.png"  height=673 width=1078 alt="SRN Results when trained with SBDD  ">   
 
 ## Trained models
 
@@ -39,7 +39,7 @@ python run_model.py --input_path=../sample_images --output_path=../sample_result
 # python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir  /media/carbajal/OS/data/models/srn_models/SRN_SBDD_models/GoPro_uniform_ks65_texp05_F1000_ill_aug_2up_n10_ef5 --step 262800
 ```
 
-<img src="figs/srn.png"  height=575 width=1200 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/srn.png"  height=575 width=1155 alt="SRN Results when trained with SBDD  ">   
 
 
 ## Testing DeepDeblur Models
@@ -54,7 +54,7 @@ python main.py --save_dir SAVE_DIR --demo true --demo_input_dir INPUT_DIR_NAME -
 # image dataloader looks into DEMO_INPUT_DIR, recursively
 ```
 
-<img src="figs/deep_deblur.png"  height=700 width=980 alt="DeepDeblur results when trained with SBDD ($\gamma$) ">  
+<img src="figs/deep_deblur.png"  height=703 width=980 alt="DeepDeblur results when trained with SBDD ($\gamma$) ">  
 
 ## Dataset Generation
 
