@@ -8,7 +8,7 @@ G Carbajal, P Vitoria, P Musé, J Lezama
 We demonstrate the effectiveness of the proposed dataset by training existing deblurring architectures on the simulated pairs and performing cross-dataset evaluation on synthetic and real blurry images. When training with the proposed method, we observed superior generalization performance for deblurring real motion-blurred photos of dynamic scenes.
 
 State-of-the-art deblurring neural networks achieve spectacular restorations in the GoPro dataset, but generalize poorly to real non-uniformly blurred images (as shown in the figure below).            
-<img src="figs/motivation.png"  height=600 width=1200 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/motivation.png"  height=673 width=1078 alt="SRN Results when trained with SBDD  ">   
 
 ## Trained models
 
