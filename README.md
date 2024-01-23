@@ -14,9 +14,9 @@ State-of-the-art deblurring neural networks achieve spectacular restorations in 
 
 We provide the [SRN](https://github.com/jiangsutx/SRN-Deblur) models trained with the proposed Segmentation Based Deblurring Dataset (SBDD). We also provide links to models trained with GoPro and REDS to facilitate the comparison.   
 
-|  SBDD  |  GoPro |  REDS  |          
-|---------------------|:--------------------|---------------------|         
-| [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN_SBDD_models.zip)| [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip)  |    
+|SBDD_NU(a=5)| SBDD_NU($\gamma=2.2$)|SBDD_NU($\gamma=1$)|SBDD_U(a=5)|SBDD_U($\gamma=2.2$)|SBDD_U($\gamma=1$)| GoPro |  REDS  |          
+|------------|:---------------------|-------------------|-----------|--------------------|------------------|-------|--------|         
+| [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_non_uniform_mob5_ks65_texp05_F1000_ill_aug_2up_n10_ef5.zip)  | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_non_uniform_mob5_ks65_texp05_F1000_ill_aug_2up_gf22_n10.zip)  | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_non_uniform_mob5_ks65_texp05_F1000_ill_aug_2up_n10_gf1.zip)    | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_uniform_ks65_texp05_F1000_ill_aug_2up_n10_ef5.zip)   |  [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_uniform_ks65_texp05_F1000_ill_aug_2up_gf22_n10.zip)   | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/GoPro_uniform_ks65_texp05_F1000_ill_aug_2up_n10_gf1.zip)    | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/SRN_SBDD_models.zip)| [public model](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/GoPro_color.zip) | [trained](https://iie.fing.edu.uy/~carbajal/SBDD_data/SBDD_models/srn-models/REDS_color.zip)  |    
     
 
 ## Testing SRN Models
