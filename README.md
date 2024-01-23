@@ -42,7 +42,8 @@ python run_model.py --input_path=../sample_images --output_path=../sample_result
 # python run_model.py --input_path=../sample_images --output_path=../sample_results --training_dir  /media/carbajal/OS/data/models/srn_models/SRN_SBDD_models/GoPro_uniform_ks65_texp05_F1000_ill_aug_2up_n10_ef5 --step 262800
 ```
 
-<img src="figs/srn.png"  height=575 width=1200 alt="SRN Results when trained with SBDD  ">   
+<img src="figs/car2.png"  height=359 width=1123 alt="SRN Results when trained with SBDD  ">  
+<img src="figs/night4.png"  height=355 width=1125 alt="SRN Results when trained with SBDD  ">  
 
 ## Dataset Generation
 
