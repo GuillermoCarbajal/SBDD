@@ -1,5 +1,5 @@
-# Improving Generalization of Deep Motion Deblurring Networks: A Convolution-Based Procedure for Analyzing and Addressing the Limitations of Current Benchmark Datasets
-G Carbajal, P Vitoria, P Musé, J Lezama
+# Unveiling the True Barrier: How Datasets Limit Motion Deblurring Methods’ Generalization to Real Images
+G Carbajal, P Vitoria, J Lezama, P Musé
 
 
 > Successfully training end-to-end deep networks for real motion deblurring requires datasets of sharp/blurred image pairs that are realistic and diverse enough to achieve generalization to real blurred images. Obtaining such datasets remains a challenging task. In this paper, we first review the limitations of existing deblurring benchmark datasets from the perspective of generalization to blurry images in the wild and analyze the underlying causes. 
