@@ -1,4 +1,4 @@
-# Unveiling the True Barrier: How Datasets Limit Motion Deblurring Methods’ Generalization to Real Images
+# Assessing the Role of Datasets in the Generalization of Motion Deblurring Methods to Real Images
 G Carbajal, P Vitoria, J Lezama, P Musé
 
 
